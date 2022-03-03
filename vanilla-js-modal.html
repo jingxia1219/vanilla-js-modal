@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  <title>Document</title>
+</head>
+<body>
+  <button type='button' class="show-offer">Show Offer</button>
+  <p class='offer-accepted hidden'>Offer Accepted!</p>
+  <div class="modal-layout hidden">
+    <div class="modal-window">
+      <button type='button' class="close-modal">x</button>
+      <p>Click this button to accept this amazing offer!</p>
+      <button type='button' class="accept-offer">Accept Offer</button>
+    </div>
+  </div>
+  <script>
+    const closeModal = document.querySelector('.close-modal')
+    const modalLayout = document.querySelector('.modal-layout')
+    const acceptOffer = document.querySelector('.accept-offer')
+    const offerAccepted = document.querySelector('.offer-accepted')
+    const showOffer = document.querySelector('.show-offer')
+    //Click to close Modal
+    closeModal.addEventListener('click',()=>{
+      // make modal layout disappear
+      modalLayout.classList.add('hidden')
+      showOffer.classList.remove('hidden')
+      console.log('s')
+    })
+    //Click to show offer
+    showOffer.addEventListener('click',()=>{
+      showOffer.classList.add('hidden')
+      modalLayout.classList.remove('hidden')
+      // accept offer
+      acceptOffer.addEventListener('click',()=>{
+        modalLayout.classList.add('hidden')
+        offerAccepted.classList.remove('hidden')
+      })
+    })
+  </script>
+  <style>
+      body{
+  padding:0;
+  display:flex;
+  height: 100vh;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-layout{
+  position: fixed;
+  top:0;
+  left:0;
+  display:flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+}
+.modal-window{
+  background-color:white;
+  position:relative;
+/*   position:fixed; */
+  max-width:400px;
+  min-width:200px;
+  width:30%;
+  height:7rem;
+  border: 1px solid;
+/*   border-radius:5%; */
+  padding: 1.5rem;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  
+}
+.close-modal{
+  position:absolute;
+  background:white;
+  border:none;
+  top:5px;
+  left:5px;
+}
+.hidden{
+  display:none;
+}
+  </style>
+</body>
+</html>
